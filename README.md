@@ -32,16 +32,15 @@ const config = {
 
 const verifier = new RekognitionWrapper(config);
 
-verifier
-	.detectExplicitContent({
-		url: "https://img.huffingtonpost.com/asset/6197f71f20000047aa8d3089.jpeg?cache=dLXWffeF86&ops=scalefit_720_noupscale",
-	})
-	.then(result => {
-		console.log(result);
-	})
-	.catch(error => {
-		console.log(error);
-	});
+verifier.detectExplicitContent({
+	url: "https://img.huffingtonpost.com/asset/6197f71f20000047aa8d3089.jpeg?cache=dLXWffeF86&ops=scalefit_720_noupscale",
+})
+.then(result => {
+	console.log(result);
+})
+.catch(error => {
+	console.log(error);
+});
 ```
 
 ## Contributing

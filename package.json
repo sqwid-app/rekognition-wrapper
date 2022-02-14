@@ -2,7 +2,7 @@
 	"name": "sqwid-img-moderation",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "src/detectExplicitContent.js",
 	"scripts": {
 		"start": "node ./tests/index.js",
 		"dev": "nodemon ./tests/index.js"

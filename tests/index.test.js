@@ -10,15 +10,6 @@ const config = {
 
 const verifier = new ImageModeration(config);
 
-/*
-	Config can be used in multiple ways,
-	Choose any one of the following ways to pass the data to the function
-	* url: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" || <image url>
-	* blob: Buffer.from(data) || <blob data>
-	* base64EncodedData: <base64 string>
-	* file: "path/to/file" <path to file>
-*/
-
 describe("Errors", () => {
 	describe("Should throw error for not having a proper config type", () => {
 		it("String", async () => {

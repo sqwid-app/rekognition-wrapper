@@ -2,6 +2,15 @@ require('dotenv').config();
 const process = require("process");
 const ImageModeration = require("..");
 
+/*
+	Config can be used in multiple ways,
+	Choose any one of the following ways to pass the data to the function
+	* url: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" || <image url>
+	* blob: Buffer.from(data) || <blob data>
+	* base64EncodedData: <base64 string>
+	* file: "path/to/file" <path to file>
+*/
+
 const config = {
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
 	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

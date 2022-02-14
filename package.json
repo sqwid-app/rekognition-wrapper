@@ -1,12 +1,12 @@
 {
 	"name": "@sqwid/rekognition",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "index.js",
 	"scripts": {
 		"lint": "eslint . --ext .js",
 		"test": "jest"
 	},
-	"keywords": [],
+	"keywords": ["sqwid", "rekognition", "aws-sdk-rekognition"],
 	"author": "Boidushya",
 	"license": "MIT",
 	"dependencies": {

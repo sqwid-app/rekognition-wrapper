@@ -1,0 +1,35 @@
+{
+	"env": {
+		"browser": true,
+		"commonjs": true,
+		"es2021": true
+	},
+	"extends": ["xo"],
+	"parserOptions": {
+		"ecmaVersion": "latest"
+	},
+	"rules": {
+		"no-cond-assign": 0,
+		"new-cap": 0,
+		"unicorn/prefer-module": 0,
+		"no-mixed-operators": 0,
+		"complexity": 0,
+		"quotes": 0,
+		"capitalized-comments": 0,
+		"brace-style": 0,
+		"object-curly-spacing": 0
+	},
+	"overrides": [
+		{
+			"files": "tests/*.js",
+			"env": {
+				"jest": true
+			},
+			"plugins": ["jest"],
+			"extends": ["plugin:jest/recommended"],
+			"rules": {
+				"jest/no-conditional-expect": 0
+			}
+		}
+	]
+}

@@ -1,0 +1,4 @@
+{
+	"watch": [".", ".eslintrc.json"],
+	"ext": "js"
+}

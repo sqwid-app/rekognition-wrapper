@@ -1,11 +1,10 @@
 {
 	"name": "sqwid-img-moderation",
 	"version": "1.0.0",
-	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "node ./tests/index.js",
-		"dev": "nodemon ./tests/index.js"
+		"lint": "eslint . --ext .js",
+		"test": "jest"
 	},
 	"keywords": [],
 	"author": "Boidushya",
@@ -14,5 +13,23 @@
 		"aws-sdk": "^2.1073.0",
 		"axios": "^0.26.0",
 		"dotenv": "^16.0.0"
-	}
+	},
+	"directories": {
+		"test": "tests"
+	},
+	"devDependencies": {
+		"eslint": "^8.9.0",
+		"eslint-config-xo": "^0.40.0",
+		"eslint-plugin-jest": "^26.1.0",
+		"jest": "^27.5.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sqwid-app/sqwid-content-moderation.git"
+	},
+	"bugs": {
+		"url": "https://github.com/sqwid-app/sqwid-content-moderation/issues"
+	},
+	"homepage": "https://github.com/sqwid-app/sqwid-content-moderation#readme",
+	"description": "Moderating image content through AWS Rekognition SDK"
 }

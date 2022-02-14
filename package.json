@@ -1,6 +1,6 @@
 {
-	"name": "sqwid-img-moderation",
-	"version": "1.0.0",
+	"name": "@sqwid/rekognition",
+	"version": "1.0.3",
 	"main": "index.js",
 	"scripts": {
 		"lint": "eslint . --ext .js",
@@ -15,6 +15,7 @@
 		"dotenv": "^16.0.0"
 	},
 	"directories": {
+		"example": "example",
 		"test": "tests"
 	},
 	"devDependencies": {
@@ -31,5 +32,5 @@
 		"url": "https://github.com/sqwid-app/sqwid-content-moderation/issues"
 	},
 	"homepage": "https://github.com/sqwid-app/sqwid-content-moderation#readme",
-	"description": "Moderating image content through AWS Rekognition SDK"
+	"description": "AWS Rekognition SDK wrapper for Sqwid"
 }

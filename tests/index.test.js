@@ -1,6 +1,6 @@
 require('dotenv').config();
 const process = require("process");
-const ImageModeration = require("..");
+const RekognitionWrapper = require("..");
 
 const config = {
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -8,7 +8,7 @@ const config = {
 	region: "ap-south-1",
 };
 
-const verifier = new ImageModeration(config);
+const verifier = new RekognitionWrapper(config);
 
 describe("Errors", () => {
 	describe("Should throw error for not having a proper config type", () => {

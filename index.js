@@ -3,7 +3,7 @@ const { Buffer } = require("buffer");
 const fs = require('fs').promises;
 const AWS = require('aws-sdk');
 const axios = require('axios');
-class ImageModeration {
+class RekognitionWrapper {
 
 	#rekognition = null;
 
@@ -59,4 +59,4 @@ class ImageModeration {
 	};
 }
 
-module.exports = ImageModeration;
+module.exports = RekognitionWrapper;

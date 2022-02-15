@@ -1,6 +1,6 @@
 {
-	"name": "@sqwid/rekognition",
-	"version": "1.1.0",
+	"name": "@sqwid/rekognition-wrapper",
+	"version": "1.1.1",
 	"main": "index.js",
 	"scripts": {
 		"lint": "eslint . --ext .js",
@@ -33,11 +33,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/sqwid-app/sqwid-content-moderation.git"
+		"url": "git+https://github.com/sqwid-app/rekognition-wrapper.git"
 	},
 	"bugs": {
-		"url": "https://github.com/sqwid-app/sqwid-content-moderation/issues"
+		"url": "https://github.com/sqwid-app/rekognition-wrapper/issues"
 	},
-	"homepage": "https://github.com/sqwid-app/sqwid-content-moderation#readme",
+	"homepage": "https://github.com/sqwid-app/rekognition-wrapper#readme",
 	"description": "AWS Rekognition SDK wrapper for Sqwid"
 }

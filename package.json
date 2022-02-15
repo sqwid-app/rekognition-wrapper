@@ -6,7 +6,11 @@
 		"lint": "eslint . --ext .js",
 		"test": "jest"
 	},
-	"keywords": ["sqwid", "rekognition", "aws-sdk-rekognition"],
+	"keywords": [
+		"sqwid",
+		"rekognition",
+		"aws-sdk-rekognition"
+	],
 	"author": "Boidushya",
 	"license": "MIT",
 	"dependencies": {

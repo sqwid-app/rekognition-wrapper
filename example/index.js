@@ -22,11 +22,11 @@ const config = {
 const verifier = new RekognitionWrapper(config);
 
 verifier.detectExplicitContent({
-	url: "https://img.huffingtonpost.com/asset/6197f71f20000047aa8d3089.jpeg?cache=dLXWffeF86&ops=scalefit_720_noupscale",
+	url: "https://res.cloudinary.com/etjfo/video/upload/v1644963416/sqwid/example1.mp4",
 })
 	.then(result => {
-		console.log("🦊 | file: index.js | line 13 | result", result);
+		console.log("🦊 | result", result);
 	})
 	.catch(error => {
-		console.log("🦊 | file: index.js | line 16 | error", error);
+		console.log("🦊 | error", error);
 	});

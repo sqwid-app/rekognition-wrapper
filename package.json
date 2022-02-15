@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"scripts": {
 		"lint": "eslint . --ext .js",
-		"test": "jest"
+		"test": "jest",
+		"example": "node example/index.js"
 	},
 	"keywords": [
 		"sqwid",
@@ -16,7 +17,9 @@
 	"dependencies": {
 		"aws-sdk": "^2.1073.0",
 		"axios": "^0.26.0",
-		"dotenv": "^16.0.0"
+		"dotenv": "^16.0.0",
+		"file-type": "^16.5.3",
+		"tmp-promise": "^3.0.3"
 	},
 	"directories": {
 		"example": "example",

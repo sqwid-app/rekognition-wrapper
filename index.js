@@ -1,18 +1,24 @@
 
 const { Buffer } = require("buffer");
 const fs = require('fs').promises;
+const path = require('path');
 const AWS = require('aws-sdk');
 const axios = require('axios');
+const FileType = require('file-type');
+const { dir } = require("tmp-promise");
+const extractFramesFromVideo = require("./lib/extractFramesFromVideo");
+
 class RekognitionWrapper {
 
 	#rekognition = null;
 
 	constructor(config) {
 		this.config = config;
+		this.MinConfidence = config.MinConfidence || 50;
 		this.#rekognition = new AWS.Rekognition(this.config);
 	}
 
-	#detectModerationLabels = data => new Promise((resolve, reject) => {
+	#detectImageModerationLabels = data => new Promise((resolve, reject) => {
 		this.#rekognition.detectModerationLabels(data, (error, data) => {
 			if (error) {
 				return reject(error);
@@ -22,8 +28,47 @@ class RekognitionWrapper {
 		});
 	});
 
+	#detectVideoModerationLabels = async data => {
+		const { path: tmpPath, cleanup } = await dir({
+			unsafeCleanup: true,
+		});
+
+		const fd = path.join(tmpPath, `video.${this.ext}`);
+		const outputPath = path.join(tmpPath, "frames/");
+
+		await fs.mkdir(outputPath);
+		await fs.writeFile(fd, new Uint8Array(data));
+
+		await extractFramesFromVideo({
+			filePath: fd,
+			outputPath,
+		});
+
+		const frames = await fs.readdir(outputPath);
+
+		const promises = frames.map(file => path.join(outputPath, file)).map(async img => {
+			const byteArray = await fs.readFile(img);
+			return this.#detectImageModerationLabels({
+				Image: {
+					Bytes: Buffer.from(byteArray),
+				},
+				MinConfidence: this.MinConfidence,
+			});
+		});
+
+		const rawResults = await Promise.allSettled(promises);
+		const resultArray = rawResults.filter(res => res.status === "fulfilled").map(res => res.value);
+		const results = {
+			ModerationLabels: resultArray.flatMap(o => o.ModerationLabels).sort((a, b) => b.Confidence - a.Confidence),
+		};
+
+		cleanup();
+
+		return results;
+	};
+
 	detectExplicitContent = async data => {
-		let blob;
+		let buffer;
 
 		if (data === null || typeof data !== "object") {
 			throw new Error(`Invalid data type, must be an object. Instead received '${typeof data}'`);
@@ -33,28 +78,40 @@ class RekognitionWrapper {
 			const image = await axios.get(data.url, {
 				responseType: 'arraybuffer',
 			});
-			blob = Buffer.from(image.data);
+			buffer = Buffer.from(image.data);
 		}
 		else if (data.blob) {
-			blob = data.blob;
+			buffer = data.blob;
 		}
 		else if (data.base64) {
-			blob = Buffer.from(data.base64, "base64");
+			buffer = Buffer.from(data.base64, "base64");
 		}
 		else if (data.file) {
 			const byteArray = await fs.readFile(data.file);
-			blob = Buffer.from(byteArray);
+			buffer = Buffer.from(byteArray);
 		}
 		else {
 			throw new Error("Invalid data content, must be one of the following: url, blob, base64, file");
 		}
 
-		const response = await this.#detectModerationLabels({
-			Image: {
-				Bytes: blob,
-			},
-			MinConfidence: 0.5,
-		});
+		let response;
+
+		const type = await FileType.fromBuffer(buffer);
+		if (type.mime.startsWith("image")) {
+			response = await this.#detectImageModerationLabels({
+				Image: {
+					Bytes: buffer,
+				},
+				MinConfidence: this.MinConfidence,
+			});
+		}
+		else if (type.mime.startsWith("video")) {
+			response = await this.#detectVideoModerationLabels(buffer);
+		}
+		else {
+			throw new Error(`Invalid file type, must be one of the following: image/*, video/*. Instead received '${type.mime}'`);
+		}
+
 		return response;
 	};
 }

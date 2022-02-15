@@ -2,6 +2,11 @@
 
 Moderating image content through AWS Rekognition SDK
 
+## Prerequisites
+
+* [PySceneDetect](https://github.com/Breakthrough/PySceneDetect)
+* [Amazon AWS Account](https://aws.amazon.com/)
+
 ## Installation
 
 Use either [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to
@@ -42,6 +47,8 @@ verifier.detectExplicitContent({
 	console.log(error);
 });
 ```
+
+For more examples, see [examples](example/)
 
 ## Contributing
 

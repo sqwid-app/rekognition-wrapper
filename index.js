@@ -80,7 +80,6 @@ class RekognitionWrapper {
 				responseType: 'arraybuffer',
 			});
 			buffer = Buffer.from(image.data);
-			console.log("🦊 | file: index.js | line 82 | RekognitionWrapper | buffer", buffer);
 		}
 		else if (data.blob) {
 			buffer = data.blob;

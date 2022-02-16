@@ -13,19 +13,19 @@ Use either [npm](https://www.npmjs.com/package/@sqwid/rekognition) or [yarn](htt
 install rekognition-wrapper.
 
 ```bash
-npm  i @sqwid/rekognition-wrapper
+npm  i @sqwid/rekognition
 ```
 
 or
 
 ```bash
-yarn add @sqwid/rekognition-wrapper
+yarn add @sqwid/rekognition
 ```
 
 ## Usage
 
 ```javascript
-const RekognitionWrapper = require("@sqwid/rekognition-wrapper");
+const RekognitionWrapper = require("@sqwid/rekognition");
 
 /*
     https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys

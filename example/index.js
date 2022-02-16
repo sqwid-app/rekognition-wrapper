@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 const process = require("process");
 const RekognitionWrapper = require("..");
 

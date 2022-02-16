@@ -98,7 +98,7 @@ class RekognitionWrapper {
 		let response;
 
 		const type = await FileType.fromBuffer(buffer);
-		if (type.mime.startsWith("image")) {
+		if (type.mime.startsWith("image") && type.mime !== "image/gif") {
 			const resizeBuf = await sharp(buffer).resize(data.config?.resize || { width: 1024 }).toBuffer();
 			response = await this.#detectImageModerationLabels({
 				Image: {
@@ -107,7 +107,7 @@ class RekognitionWrapper {
 				MinConfidence: this.MinConfidence,
 			});
 		}
-		else if (type.mime.startsWith("video")) {
+		else if (type.mime.startsWith("video") || type.mime === 'image/gif') {
 			response = await this.#detectVideoModerationLabels(buffer);
 		}
 		else {

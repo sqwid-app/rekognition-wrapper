@@ -6,6 +6,7 @@ const AWS = require('aws-sdk');
 const axios = require('axios');
 const FileType = require('file-type');
 const { dir } = require("tmp-promise");
+const sharp = require('sharp');
 const extractFramesFromVideo = require("./lib/extractFramesFromVideo");
 
 class RekognitionWrapper {
@@ -98,9 +99,10 @@ class RekognitionWrapper {
 
 		const type = await FileType.fromBuffer(buffer);
 		if (type.mime.startsWith("image")) {
+			const resizeBuf = await sharp(buffer).resize(data.config.resize || { width: 1024 }).toBuffer();
 			response = await this.#detectImageModerationLabels({
 				Image: {
-					Bytes: buffer,
+					Bytes: resizeBuf,
 				},
 				MinConfidence: this.MinConfidence,
 			});

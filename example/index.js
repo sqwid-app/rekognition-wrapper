@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const process = require("process");
 const RekognitionWrapper = require("..");
 
@@ -22,7 +23,8 @@ const config = {
 const verifier = new RekognitionWrapper(config);
 
 verifier.detectExplicitContent({
-	url: "https://res.cloudinary.com/etjfo/video/upload/v1644963416/sqwid/example1.mp4",
+	// url: "https://res.cloudinary.com/etjfo/video/upload/v1644963416/sqwid/example1.mp4",
+	file: path.resolve (__dirname, "porn.mp4"),
 })
 	.then(result => {
 		console.log("🦊 | result", result);

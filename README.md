@@ -4,7 +4,7 @@ Moderating image content through AWS Rekognition SDK
 
 ## Prerequisites
 
-* [PySceneDetect](https://github.com/Breakthrough/PySceneDetect)
+* [PySceneDetect](https://github.com/Breakthrough/PySceneDetect) (Only required for video moderation)
 * [Amazon AWS Account](https://aws.amazon.com/)
 
 ## Installation

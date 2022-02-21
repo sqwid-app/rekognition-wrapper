@@ -9,23 +9,23 @@ Moderating image content through AWS Rekognition SDK
 
 ## Installation
 
-Use either [npm](https://www.npmjs.com/package/@sqwid/rekognition) or [yarn](https://yarnpkg.com/) to
+Use either [npm](https://www.npmjs.com/package/@sqwid/rekognition-wrapper) or [yarn](https://yarnpkg.com/) to
 install rekognition-wrapper.
 
 ```bash
-npm  i @sqwid/rekognition
+npm  i @sqwid/rekognition-wrapper
 ```
 
 or
 
 ```bash
-yarn add @sqwid/rekognition
+yarn add @sqwid/rekognition-wrapper
 ```
 
 ## Usage
 
 ```javascript
-const RekognitionWrapper = require("@sqwid/rekognition");
+const RekognitionWrapper = require("@sqwid/rekognition-wrapper");
 
 /*
     https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys

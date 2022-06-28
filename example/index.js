@@ -23,7 +23,7 @@ const verifier = new RekognitionWrapper(config);
 
 verifier.detectExplicitContent({
 	// url: "https://cloudflare-ipfs.com/ipfs/QmXjgUANzPgrZTR8pddp6SEzdpQEhACu6KaaPDXAfkAN3F",
-	url: "https://res.cloudinary.com/etjfo/video/upload/v1644963439/sqwid/example3.mp4",
+	url: "https://cloudflare-ipfs.com/ipfs/Qmb9DKtdhp2wSTN8XpixmYBBAieA1t35jLwDKm8mTHF5Dq",
 })
 	.then(result => {
 		console.log("🦊 | result", result);
